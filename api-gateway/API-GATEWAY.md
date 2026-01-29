@@ -48,12 +48,6 @@ flowchart LR
     Client --> Cart[Cart Service]
     Client --> Orders[Orders Service]
     Client --> Shipping[Shipping Service]
-
-    classDef client fill:#e3f2fd,stroke:#1e88e5,stroke-width:2px
-    classDef service fill:#f5f5f5,stroke:#333,stroke-width:2px
-
-    class Client client
-    class Users,Catalog,Cart,Orders,Shipping service
 ```
 
 <br>
@@ -108,14 +102,6 @@ flowchart LR
     Gateway --> Cart[Cart Service]
     Gateway --> Orders[Orders Service]
     Gateway --> Shipping[Shipping Service]
-
-    classDef client fill:#e3f2fd,stroke:#1e88e5,stroke-width:2px
-    classDef gateway fill:#ede7f6,stroke:#5e35b1,stroke-width:2px
-    classDef service fill:#f5f5f5,stroke:#333,stroke-width:2px
-
-    class Client client
-    class Gateway gateway
-    class Users,Catalog,Cart,Orders,Shipping service
 ```
 
 <br>
@@ -253,14 +239,6 @@ flowchart LR
     EdgeGateway --> UsersService[Users Service]
     EdgeGateway --> CatalogService[Catalog Service]
     EdgeGateway --> OrdersService[Orders Service]
-
-    classDef client fill:#e3f2fd,stroke:#1e88e5,stroke-width:2px
-    classDef gateway fill:#ede7f6,stroke:#5e35b1,stroke-width:2px
-    classDef service fill:#f5f5f5,stroke:#333,stroke-width:2px
-
-    class Client client
-    class EdgeGateway gateway
-    class UsersService,CatalogService,OrdersService service
 ```
 
 <br>
@@ -296,14 +274,6 @@ flowchart LR
     WebBFF --> UsersService
     WebBFF --> CatalogService[Catalog Service]
     WebBFF --> OrdersService
-
-    classDef client fill:#e3f2fd,stroke:#1e88e5,stroke-width:2px
-    classDef bff fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-    classDef service fill:#f5f5f5,stroke:#333,stroke-width:2px
-
-    class MobileApp,WebApp client
-    class MobileBFF,WebBFF bff
-    class UsersService,CatalogService,OrdersService service
 ```
 
 <br>
@@ -337,14 +307,6 @@ flowchart LR
     UsersGateway --> UsersService[Users Service]
     OrdersGateway --> OrdersService[Orders Service]
     PaymentsGateway --> PaymentsService[Payments Service]
-
-    classDef client fill:#e3f2fd,stroke:#1e88e5,stroke-width:2px
-    classDef domainGateway fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-    classDef service fill:#f5f5f5,stroke:#333,stroke-width:2px
-
-    class Client client
-    class UsersGateway,OrdersGateway,PaymentsGateway domainGateway
-    class UsersService,OrdersService,PaymentsService service
 ```
 
 <br>
@@ -386,14 +348,6 @@ flowchart TD
     RetryTimeout --> Service
     ServiceDiscovery --> Service
     Observability --> Service
-
-    classDef gateway fill:#ede7f6,stroke:#5e35b1,stroke-width:2px
-    classDef pattern fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-    classDef service fill:#f5f5f5,stroke:#333,stroke-width:2px
-
-    class Gateway gateway
-    class CircuitBreaker,RateLimiter,RetryTimeout,ServiceDiscovery,Observability pattern
-    class Service service
 ```
 
 <br>
