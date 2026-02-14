@@ -19,3 +19,10 @@ Thumbs.db
 *.temp
 *.swp
 *~
+
+# Maven and build outputs (all subprojects, any depth)
+**/HELP.md
+**/target/
+**/.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
