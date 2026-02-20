@@ -55,13 +55,13 @@ mvn exec:java -Dexec.mainClass="com.example.Main"
 
 ## Code Style Guidelines
 
-Follow the Cursor rules located in `.cursor/rules/`:
+Follow the agent rules located in `.agents/rules/java`:
 
-* **Java Style** (`@10-java-style`): PascalCase for classes, camelCase for methods, UPPER\_SNAKE\_CASE for constants
-* **Modern Java** (`@50-modern-java`): Use Streams, Optional, Records, pattern matching (Java 17+)
-* **Testing** (`@20-testing`): JUnit 5 with Given-When-Then structure, descriptive test names
-* **Exceptions & Logging** (`@30-exceptions-logging`): Specific exceptions, try-with-resources, SLF4J parameterized logging
-* **Concurrency** (`@40-concurrency`): Thread-safe collections, atomic operations, ExecutorService
+* **Java Style** (`@java-style`): PascalCase for classes, camelCase for methods, UPPER\_SNAKE\_CASE for constants
+* **Modern Java** (`@java-modern-java`): Use Streams, Optional, Records, pattern matching (Java 17+)
+* **Testing** (`@java-testing`): JUnit 5 with Given-When-Then structure, descriptive test names
+* **Exceptions & Logging** (`@java-exceptions-logging`): Specific exceptions, try-with-resources, SLF4J parameterized logging
+* **Concurrency** (`@java-concurrency`): Thread-safe collections, atomic operations, ExecutorService
 
 ### Key Style Rules
 
@@ -98,19 +98,19 @@ void shouldAllowRequestWhenUnderLimit() {
 }
 ```
 
-## Using Cursor Rules
+## Using Agent Rules
 
-This project uses a minimal set of essential Cursor rules. Reference `CURSOR-RULES-JAVA.md` for complete documentation.
+This project uses a minimal set of essential agent rules. Reference `JAVA-AGENT-RULES.md` for complete documentation.
 
 ### Quick Reference Prompts
 
-* **Code Style**: `Apply Java style guidelines from @10-java-style to improve this code`
-* **Testing**: `Write JUnit 5 tests following @20-testing for this class`
-* **Exception Handling**: `Improve exception handling using @30-exceptions-logging`
-* **Concurrency**: `Review this concurrent code using @40-concurrency guidelines`
-* **Modern Java**: `Refactor this code to use modern Java features from @50-modern-java`
-* **Documentation**: `Create a README following @60-documentation for this module`
-* **Maven**: `Review this pom.xml using @70-maven-basics`
+* **Code Style**: `Apply Java style guidelines from @java-style to improve this code`
+* **Testing**: `Write JUnit 5 tests following @java-testing for this class`
+* **Exception Handling**: `Improve exception handling using @java-exceptions-logging`
+* **Concurrency**: `Review this concurrent code using @java-concurrency guidelines`
+* **Modern Java**: `Refactor this code to use modern Java features from @java-modern-java`
+* **Documentation**: `Create a README following @java-documentation for this module`
+* **Maven**: `Review this pom.xml using @java-maven-basics`
 
 ## Creating a New Example Module
 
@@ -305,17 +305,18 @@ Breaking changes can be indicated in two ways:
 
 ```
 distributed-systems-in-java/
-├── .cursor/
-│   ├── rules/          # Essential Cursor rules for Java development
-│   └── my-rules/       # Project-specific rules (if any)
-├── <pattern-name>/      # Each pattern gets its own module/directory
+├── .agents/
+│   ├── rules/ 
+│   │   └── java/          # Essential agent rules for Java development       
+│   └── my-rules/          # Project-specific rules (if any)
+├── <pattern-name>/        # Each pattern gets its own module/directory
 │   ├── pom.xml
 │   ├── src/
 │   │   ├── main/java/
 │   │   └── test/java/
 │   └── README.md
-├── CURSOR-RULES-JAVA.md # Guide to using Cursor rules
-└── README.md           # Project overview
+├── JAVA-AGENT-RULES.md    # Guide to using agent rules
+└── README.md              # Project overview
 ```
 
 Each pattern example should be self-contained and runnable independently.
