@@ -334,14 +334,7 @@ Within a distributed systems architecture, the gateway serves as the concrete en
 
 ## References
 
-* Spring Cloud Gateway Project Page
-  <https://spring.io/projects/spring-cloud-gateway>
-
-* Spring Cloud Gateway Reference Documentation
-  <https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/>
-
-* Spring Guide: Building a Gateway
-  <https://spring.io/guides/gs/gateway/>
-
-* Configuring Route Predicate and Filter Factories
-  <https://docs.spring.io/spring-cloud-gateway/reference/>
+* [Spring Cloud Gateway Project Page](https://spring.io/projects/spring-cloud-gateway)
+* [Spring Cloud Gateway Reference Documentation](https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/)
+* [Spring Guide: Building a Gateway](https://spring.io/guides/gs/gateway/)
+* [Configuring Route Predicate and Filter Factories](https://docs.spring.io/spring-cloud-gateway/reference/)
