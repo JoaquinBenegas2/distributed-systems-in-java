@@ -260,8 +260,8 @@ spring:
 
 This configuration defines two routes:
 
-* `/users/**` → forwarded to `localhost:8081`
-* `/catalog/**` → forwarded to `localhost:8082`
+* `/catalog/**` → forwarded to `localhost:8081`
+* `/users/**` → forwarded to `localhost:8082`
 
 ***
 
@@ -280,7 +280,7 @@ The gateway:
 3. Forwards the request to:
 
 ```
-http://localhost:8081/users/test
+http://localhost:8082/users/test
 ```
 
 The path is preserved. The gateway only changes:

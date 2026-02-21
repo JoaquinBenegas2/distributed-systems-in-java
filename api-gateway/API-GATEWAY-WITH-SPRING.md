@@ -26,7 +26,7 @@ In a typical Spring Boot setup, the gateway is implemented as a standalone appli
 
 ### 1. Dependency Management (Maven)
 
-Spring Cloud should be imported using the Spring Cloud BOM:
+Spring Cloud should be imported using the Spring Cloud BOM. In this project, the BOM is declared in the parent POM (see [About the Implementation](ABOUT-THE-IMPLEMENTATION.md)):
 
 ```xml
 <dependencyManagement>
@@ -34,7 +34,7 @@ Spring Cloud should be imported using the Spring Cloud BOM:
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-dependencies</artifactId>
-            <version>2025.1.1</version>
+            <version>2025.0.1</version>
             <type>pom</type>
             <scope>import</scope>
         </dependency>
@@ -52,20 +52,23 @@ By importing the BOM:
 
 The `<dependencyManagement>` section does not add dependencies to the project. It only defines which versions should be used when those dependencies are declared later.
 
-Then, add the gateway starter dependency:
+Then, add the gateway and WebFlux dependencies. In this project we use:
 
 ```xml
 <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-webflux</artifactId>
+</dependency>
+
+<dependency>
     <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-starter-gateway</artifactId>
+    <artifactId>spring-cloud-starter-gateway-server-webflux</artifactId>
 </dependency>
 ```
 
-Notice that no `<version>` is specified. The version is inherited from the Spring Cloud BOM defined earlier.
+Notice that no `<version>` is specified; versions are inherited from the parent (Spring Boot and Spring Cloud BOM). WebFlux is required because the gateway is reactive. The `spring-cloud-starter-gateway-server-webflux` artifact is the WebFlux-based gateway starter.
 
-This approach ensures consistency across the Spring Cloud ecosystem and prevents incompatibility issues.
-
-It is important not to include the Spring MVC starter, since Spring Cloud Gateway is built on WebFlux and uses a reactive programming model. Mixing it with the traditional servlet stack can lead to configuration conflicts and unexpected behavior.
+Do not include the Spring MVC starter (`spring-boot-starter-web`), since Spring Cloud Gateway is built on WebFlux. Mixing it with the traditional servlet stack can lead to configuration conflicts and unexpected behavior.
 
 ***
 
@@ -100,20 +103,27 @@ A Route defines how a request should be processed. It typically includes:
 
 A route is considered a match only if all of its predicates evaluate to true.
 
-Example:
+In this project, routes are configured under `spring.cloud.gateway.server.webflux.routes`:
 
 ```yaml
 spring:
   cloud:
     gateway:
-      routes:
-        - id: users-route
-          uri: http://localhost:8081
-          predicates:
-            - Path=/users/**
+      server:
+        webflux:
+          routes:
+            - id: catalog-service-route
+              uri: http://localhost:8081
+              predicates:
+                - Path=/catalog/**
+
+            - id: user-service-route
+              uri: http://localhost:8082
+              predicates:
+                - Path=/users/**
 ```
 
-In this configuration, any request that matches `/users/**` is forwarded to the service running on port 8081. The gateway does not need to know how that service is implemented internally; it simply proxies the request.
+Requests matching `/catalog/**` are forwarded to the service on port 8081; those matching `/users/**` go to port 8082. The gateway does not need to know how those services are implemented; it simply proxies the request.
 
 This separation of concerns allows services to evolve independently while the gateway maintains a stable external interface.
 
