@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "skills": {
+    "java-microservices": {
+      "source": "pluginagentmarketplace/custom-plugin-java",
+      "sourceType": "github",
+      "computedHash": "d4c0c5e302e75041d4eb9bf0782110d2fd1efcdf23efe650bac3122816aa9ec4"
+    },
+    "java-spring-boot": {
+      "source": "pluginagentmarketplace/custom-plugin-java",
+      "sourceType": "github",
+      "computedHash": "c1d1523ec6ead1de3c7efd73e7a6041af983ef0dc38ae2050f75c6375ba6b7ae"
+    }
+  }
+}
