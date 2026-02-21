@@ -1,3 +1,20 @@
 spring:
   application:
     name: Api Gateway Project
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: catalog-service-route
+              uri: http://localhost:8081
+              predicates:
+                - Path=/catalog/**
+            - id: user-service-route
+              uri: http://localhost:8082
+              predicates:
+                - Path=/users/**
+
+server:
+  port: 8080
+
