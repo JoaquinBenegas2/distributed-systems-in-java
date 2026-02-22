@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: Catalog Service Project
+
+server:
+  port: 8081
